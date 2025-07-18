@@ -134,7 +134,7 @@ func NewClient(u *url.URL, insecure bool) *Client {
 	}
 
 	c.hosts = make(map[string]string)
-	c.t.TLSClientConfig = &tls.Config{InsecureSkipVerify: c.k}
+	c.t.TLSClientConfig = &tls.Config{InsecureSkipVerify: c.k, MinVersion: tls.VersionTLS10}
 	// Don't bother setting DialTLS if InsecureSkipVerify=true
 	if !c.k {
 		c.t.DialTLS = c.dialTLS
