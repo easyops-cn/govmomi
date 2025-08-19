@@ -10,21 +10,19 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/vmware/govmomi/vapi/esx/settings"
 	"github.com/vmware/govmomi/vapi/rest"
 )
 
 const (
-	// BasePath The base endpoint for the clusters API
-	BasePath = settings.BasePath + "/clusters"
+	basePath = "/api/esx/settings"
 	// SoftwareDraftsPath The endpoint for the software drafts API
-	SoftwareDraftsPath = BasePath + "/%s/software/drafts"
+	SoftwareDraftsPath = basePath + "/clusters/%s/software/drafts"
 	// SoftwareComponentsPath The endpoint for retrieving the custom components in a software draft
 	SoftwareComponentsPath = SoftwareDraftsPath + "/%s/software/components"
 	// BaseImagePath The endpoint for retrieving the base image of a software draft
 	BaseImagePath = SoftwareDraftsPath + "/%s/software/base-image"
 	// SoftwareEnablementPath The endpoint for retrieving the vLCM status (enabled/disabled) of a cluster
-	SoftwareEnablementPath = BasePath + "/%s/enablement/software"
+	SoftwareEnablementPath = basePath + "/clusters/%s/enablement/software"
 )
 
 // Manager extends rest.Client, adding Software Drafts related methods.
