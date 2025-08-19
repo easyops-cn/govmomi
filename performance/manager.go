@@ -344,13 +344,13 @@ func (m *Manager) SampleByName(ctx context.Context, spec types.PerfQuerySpec, me
 // MetricSeries contains the same data as types.PerfMetricIntSeries, but with the CounterId converted to Name.
 type MetricSeries struct {
 	Name     string
-	unit     string
+	Unit     string
 	Instance string
 	Value    []int64
 }
 
 func (s *MetricSeries) Format(val int64) string {
-	switch types.PerformanceManagerUnit(s.unit) {
+	switch types.PerformanceManagerUnit(s.Unit) {
 	case types.PerformanceManagerUnitPercent:
 		return strconv.FormatFloat(float64(val)/100.0, 'f', 2, 64)
 	default:
@@ -414,7 +414,7 @@ func (m *Manager) ToMetricSeries(ctx context.Context, series []types.BasePerfEnt
 
 			values = append(values, MetricSeries{
 				Name:     counters[v.Id.CounterId].Name(),
-				unit:     counters[v.Id.CounterId].UnitInfo.GetElementDescription().Key,
+				Unit:     counters[v.Id.CounterId].UnitInfo.GetElementDescription().Key,
 				Instance: v.Id.Instance,
 				Value:    v.Value,
 			})
