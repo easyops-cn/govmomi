@@ -9,17 +9,17 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/vmware/govmomi/vapi/esx/settings"
 	"github.com/vmware/govmomi/vapi/rest"
 )
 
 const (
+	basePath = "/api/esx/settings"
 	// DepotsOfflinePath The endpoint for the offline depots API
-	DepotsOfflinePath = settings.BasePath + "/depots/offline"
+	DepotsOfflinePath = basePath + "/depots/offline"
 	// DepotsOfflineContentPath The endpoint for retrieving the components in a depot
 	DepotsOfflineContentPath = DepotsOfflinePath + "/%s/content"
 	// BaseImagesPath The endpoint for retrieving the list of base ESXi images
-	BaseImagesPath = settings.BasePath + "/depot-content/base-images"
+	BaseImagesPath = basePath + "/depot-content/base-images"
 )
 
 // Manager extends rest.Client, adding vLCM related methods.
